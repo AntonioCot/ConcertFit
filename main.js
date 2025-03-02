@@ -45,96 +45,96 @@ const products = [
         ],
         description: "El Polo Álvaro Díaz Sayonara Tour 2025 es una prenda oversize de algodón 20/1, perfecta para los fans del artista puertorriqueño Álvaro Díaz, una de las figuras más innovadoras del reggaetón y hip-hop latino. Inspirado en su álbum Sayonara, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, destacando la esencia visual del disco. Una pieza exclusiva que fusiona comodidad y tendencia urbana."
     },
-    {
-        id: 4,
-        name: "Polo Bad Bunny World Tour",
-        artist: "Bad Bunny",
-        price: 40.00,
-        category: "reggaeton",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product4-thumb1.jpg",
-            "images/product4-thumb2.jpg",
-            "images/product4-thumb3.jpg"
-        ],
-        description: "El Polo Bad Bunny World Tour es una prenda oversize de algodón 20/1, diseñada para los fans del icónico artista puertorriqueño Bad Bunny, una de las mayores influencias del reggaetón y la música urbana global. Inspirado en su gira mundial, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, reflejando la energía y esencia de sus conciertos. Una pieza exclusiva que fusiona comodidad y estilo urbano."
-    },
-    {
-        id: 5,
-        name: "Polo Quevedo Buenas Noches Tour",
-        artist: "Quevedo",
-        price: 40.00,
-        category: "reggaeton",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product5-thumb1.jpg",
-            "images/product5-thumb2.jpg",
-            "images/product5-thumb3.jpg"
-        ],
-        description: "El Polo Quevedo Buenas Noches Tour es una prenda oversize de algodón 20/1, ideal para los fans del artista español Quevedo, una de las voces más influyentes del reggaetón y la música urbana. Inspirado en su gira Buenas Noches Tour, este diseño presenta un estilo minimalista en el frente y un arte visual llamativo en la espalda, capturando la esencia de sus shows. Una pieza exclusiva que combina comodidad y tendencia."
-    },
-    {
-        id: 6,
-        name: "Polo Duki Ameri Tour",
-        artist: "Duki",
-        price: 40.00,
-        category: "trap",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product6-thumb1.jpg",
-            "images/product6-thumb2.jpg",
-            "images/product6-thumb3.jpg"
-        ],
-        description: "El Polo Duki Ameri Tour es una prenda oversize de algodón 20/1, perfecta para los seguidores de Duki, pionero del trap argentino y referente de la música urbana. Inspirado en su gira Ameri Tour, este diseño fusiona un estilo minimalista en el frente con un impactante arte gráfico en la espalda, reflejando la energía y esencia de sus shows. Una pieza exclusiva que combina comodidad y actitud."
-    },
-    {
-        id: 7,
-        name: "Polo Daft Punk Legacy",
-        artist: "Daft Punk",
-        price: 40.00,
-        category: "electronica",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product7-thumb1.jpg",
-            "images/product7-thumb2.jpg",
-            "images/product7-thumb3.jpg"
-        ],
-        description: "El *Polo Daft Punk Legacy* rinde homenaje al legendario dúo francés que revolucionó la música electrónica. Fabricado en algodón premium, ofrece un ajuste oversize y un diseño minimalista con los icónicos cascos en el frente. Una pieza esencial para los fans del house y el electro."
-    },
-    {
-        id: 8,
-        name: "Polo Billie Eilish World Tour",
-        artist: "Billie Eilish",
-        price: 40.00,
-        category: "pop",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product8-thumb1.jpg",
-            "images/product8-thumb2.jpg",
-            "images/product8-thumb3.jpg"
-        ],
-        description: "El *Polo Billie Eilish World Tour* captura la esencia única de la artista con un diseño auténtico y vanguardista. Hecho de algodón orgánico, combina comodidad y estilo, con detalles gráficos inspirados en su gira mundial. Ideal para los fans de su estética innovadora."
-    },
-    {
-        id: 9,
-        name: "Polo AC/DC Power Up Tour",
-        artist: "AC/DC",
-        price: 40.00,
-        category: "rock",
-        image: "images/new-product-coming-soon.jpg",
-        images: [
-            "images/new-product-coming-soon.jpg",
-            "images/product9-thumb1.jpg",
-            "images/product9-thumb2.jpg",
-            "images/product9-thumb3.jpg"
-        ],
-        description: "El *Polo AC/DC Power Up Tour* es un tributo a una de las bandas más icónicas del rock. Confeccionado en algodón resistente, presenta el legendario logo de AC/DC en el frente y un diseño conmemorativo en la espalda. Perfecto para quienes llevan el rock en la piel."
-    }
+    // {
+    //     id: 4,
+    //     name: "Polo Bad Bunny World Tour",
+    //     artist: "Bad Bunny",
+    //     price: 40.00,
+    //     category: "reggaeton",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product4-thumb1.jpg",
+    //         "images/product4-thumb2.jpg",
+    //         "images/product4-thumb3.jpg"
+    //     ],
+    //     description: "El Polo Bad Bunny World Tour es una prenda oversize de algodón 20/1, diseñada para los fans del icónico artista puertorriqueño Bad Bunny, una de las mayores influencias del reggaetón y la música urbana global. Inspirado en su gira mundial, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, reflejando la energía y esencia de sus conciertos. Una pieza exclusiva que fusiona comodidad y estilo urbano."
+    // },
+    // {
+    //     id: 5,
+    //     name: "Polo Quevedo Buenas Noches Tour",
+    //     artist: "Quevedo",
+    //     price: 40.00,
+    //     category: "reggaeton",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product5-thumb1.jpg",
+    //         "images/product5-thumb2.jpg",
+    //         "images/product5-thumb3.jpg"
+    //     ],
+    //     description: "El Polo Quevedo Buenas Noches Tour es una prenda oversize de algodón 20/1, ideal para los fans del artista español Quevedo, una de las voces más influyentes del reggaetón y la música urbana. Inspirado en su gira Buenas Noches Tour, este diseño presenta un estilo minimalista en el frente y un arte visual llamativo en la espalda, capturando la esencia de sus shows. Una pieza exclusiva que combina comodidad y tendencia."
+    // },
+    // {
+    //     id: 6,
+    //     name: "Polo Duki Ameri Tour",
+    //     artist: "Duki",
+    //     price: 40.00,
+    //     category: "trap",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product6-thumb1.jpg",
+    //         "images/product6-thumb2.jpg",
+    //         "images/product6-thumb3.jpg"
+    //     ],
+    //     description: "El Polo Duki Ameri Tour es una prenda oversize de algodón 20/1, perfecta para los seguidores de Duki, pionero del trap argentino y referente de la música urbana. Inspirado en su gira Ameri Tour, este diseño fusiona un estilo minimalista en el frente con un impactante arte gráfico en la espalda, reflejando la energía y esencia de sus shows. Una pieza exclusiva que combina comodidad y actitud."
+    // },
+    // {
+    //     id: 7,
+    //     name: "Polo Daft Punk Legacy",
+    //     artist: "Daft Punk",
+    //     price: 40.00,
+    //     category: "electronica",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product7-thumb1.jpg",
+    //         "images/product7-thumb2.jpg",
+    //         "images/product7-thumb3.jpg"
+    //     ],
+    //     description: "El *Polo Daft Punk Legacy* rinde homenaje al legendario dúo francés que revolucionó la música electrónica. Fabricado en algodón premium, ofrece un ajuste oversize y un diseño minimalista con los icónicos cascos en el frente. Una pieza esencial para los fans del house y el electro."
+    // },
+    // {
+    //     id: 8,
+    //     name: "Polo Billie Eilish World Tour",
+    //     artist: "Billie Eilish",
+    //     price: 40.00,
+    //     category: "pop",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product8-thumb1.jpg",
+    //         "images/product8-thumb2.jpg",
+    //         "images/product8-thumb3.jpg"
+    //     ],
+    //     description: "El *Polo Billie Eilish World Tour* captura la esencia única de la artista con un diseño auténtico y vanguardista. Hecho de algodón orgánico, combina comodidad y estilo, con detalles gráficos inspirados en su gira mundial. Ideal para los fans de su estética innovadora."
+    // },
+    // {
+    //     id: 9,
+    //     name: "Polo AC/DC Power Up Tour",
+    //     artist: "AC/DC",
+    //     price: 40.00,
+    //     category: "rock",
+    //     image: "images/new-product-coming-soon.jpg",
+    //     images: [
+    //         "images/new-product-coming-soon.jpg",
+    //         "images/product9-thumb1.jpg",
+    //         "images/product9-thumb2.jpg",
+    //         "images/product9-thumb3.jpg"
+    //     ],
+    //     description: "El *Polo AC/DC Power Up Tour* es un tributo a una de las bandas más icónicas del rock. Confeccionado en algodón resistente, presenta el legendario logo de AC/DC en el frente y un diseño conmemorativo en la espalda. Perfecto para quienes llevan el rock en la piel."
+    // }
 ];
 
 // Datos de artistas
@@ -398,8 +398,31 @@ function setupArtistPage() {
     const artistProducts = products.filter(p => p.artist.trim().toLowerCase() === artist.name.trim().toLowerCase());
 
     if (artistProducts.length === 0) {
-        productGrid.innerHTML = '<p>No hay productos disponibles para este artista.</p>';
-        return;
+        const productGrid = document.querySelector('.product-grid');
+
+        // Insertar el mensaje dentro de .product-grid
+        productGrid.innerHTML = '<div class="custom-message">Próximamente saldrán productos de este artista.</div>';
+
+        // Asegurar que .product-grid sea un contenedor flex y centre el contenido
+        productGrid.style.cssText = `
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        `;
+
+        // Aplicar estilos a .custom-message para mejor apariencia
+        document.querySelector('.custom-message').style.cssText = `
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+        `;
     }
 
     // Insertar solo los productos de este artista
@@ -417,7 +440,7 @@ function setupArtistPage() {
             <div class="product-info">
                 <h3>${product.name}</h3>
                 <p class="product-artist">${product.artist}</p>
-                <p class="product-price">$${product.price.toFixed(2)}</p>
+                <p class="product-price">S/. ${product.price.toFixed(2)}</p>
                 <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola,%20quiero%20más%20información', '_blank')">Contactar</button>
             </div>
         `;
@@ -437,11 +460,49 @@ function loadProducts(filter = "all") {
 
     if (!productGrid) return;
 
+    // Resetear los estilos de `.product-grid` antes de modificar su contenido
+    productGrid.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 100%;
+        min-height: auto;
+    `;
+
     // Limpiar el contenedor antes de agregar productos
     productGrid.innerHTML = '';
 
     // Filtrar productos si se selecciona una categoría específica
     const filteredProducts = filter === "all" ? products : products.filter(p => p.category === filter);
+
+    // Si no hay productos, mostrar el mensaje de "Próximamente..."
+    if (filteredProducts.length === 0) {
+        productGrid.innerHTML = '<div class="custom-message">Próximamente saldrán productos de esta categoría</div>';
+
+        // Aplicar estilos a `.product-grid` para centrar el mensaje
+        productGrid.style.cssText = `
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 200px;
+        `;
+
+        // Aplicar estilos a `.custom-message` para mejorar la apariencia
+        document.querySelector('.custom-message').style.cssText = `
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+        `;
+
+        return;
+    }
 
     // Recorrer el array de productos y generar las tarjetas dinámicamente
     filteredProducts.forEach(product => {
@@ -459,7 +520,7 @@ function loadProducts(filter = "all") {
             <div class="product-info">
                 <h3>${product.name}</h3>
                 <p class="product-artist">${product.artist}</p>
-                <p class="product-price">$${product.price.toFixed(2)}</p>
+                <p class="product-price">S/. ${product.price.toFixed(2)}</p>
                 <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola,%20quiero%20más%20información', '_blank')">Contactar</button>
             </div>
         `;
@@ -470,6 +531,7 @@ function loadProducts(filter = "all") {
     // Reinicializar la funcionalidad de añadir al carrito después de actualizar productos
     // setupAddToCart();
 }
+
 
 function loadFeaturedArtists() {
     const artistSlider = document.querySelector('.artist-slider');
@@ -567,7 +629,7 @@ function setupProductDetails() {
     // Actualizar la información del producto en la página
     document.getElementById('product-title').textContent = product.name;
     document.getElementById('product-artist').textContent = product.artist;
-    document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById('product-price').textContent = `S/. ${product.price.toFixed(2)}`;
     document.getElementById('product-description').textContent = product.description;
 
     // Cargar la imagen principal
