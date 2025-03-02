@@ -165,22 +165,28 @@ const artists = [
     },
     {
         id: 5,
-        name: "Daft Punk",
+        name: "Rauw Alejandro",
         image: "images/artist5.jpg",
-        description: "Dúo francés de música electrónica formado por Thomas Bangalter y Guy-Manuel de Homem-Christo. Daft Punk revolucionó la escena con su fusión de house, funk, disco y electro, creando himnos atemporales como *One More Time*, *Harder, Better, Faster, Stronger* y *Get Lucky*. Con su identidad enmascarada y una estética futurista, redefinieron la cultura musical con su innovadora producción y sus espectaculares shows en vivo. Su legado sigue marcando la industria incluso tras su separación en 2021."
+        description: "Cantante y compositor puertorriqueño Raúl Alejandro Ocasio Ruiz, nacido en 1993, reconocido por ser una de las figuras más innovadoras de la música urbana y el reguetón. Rauw Alejandro ha conquistado el panorama musical con éxitos como Todo de Ti, Tattoo y Desesperados. Su estilo fusiona reguetón, pop y ritmos electrónicos, destacando por su versatilidad, energía en el escenario y su capacidad para reinventar el género. A lo largo de su carrera, ha logrado múltiples premios y una gran base de seguidores, consolidándose como un referente de la nueva generación de artistas latinos."
     },
     {
         id: 6,
-        name: "Billie Eilish",
+        name: "Daft Punk",
         image: "images/artist6.jpg",
-        description: "Billie Eilish Pirate Baird O'Connell es una cantante y compositora estadounidense que ha redefinido el pop contemporáneo con su estilo oscuro, introspectivo y vanguardista. Desde su irrupción con *Ocean Eyes*, ha conquistado la industria con álbumes innovadores como *When We All Fall Asleep, Where Do We Go?* y *Happier Than Ever*. Con una estética única, una voz etérea y letras profundas, ha sido galardonada con múltiples premios Grammy y se ha consolidado como una de las artistas más influyentes de su generación."
+        description: "Dúo francés de música electrónica formado por Thomas Bangalter y Guy-Manuel de Homem-Christo. Daft Punk revolucionó la escena con su fusión de house, funk, disco y electro, creando himnos atemporales como *One More Time*, *Harder, Better, Faster, Stronger* y *Get Lucky*. Con su identidad enmascarada y una estética futurista, redefinieron la cultura musical con su innovadora producción y sus espectaculares shows en vivo. Su legado sigue marcando la industria incluso tras su separación en 2021."
     },
     {
         id: 7,
-        name: "AC/DC",
+        name: "Billie Eilish",
         image: "images/artist7.jpg",
+        description: "Billie Eilish Pirate Baird O'Connell es una cantante y compositora estadounidense que ha redefinido el pop contemporáneo con su estilo oscuro, introspectivo y vanguardista. Desde su irrupción con *Ocean Eyes*, ha conquistado la industria con álbumes innovadores como *When We All Fall Asleep, Where Do We Go?* y *Happier Than Ever*. Con una estética única, una voz etérea y letras profundas, ha sido galardonada con múltiples premios Grammy y se ha consolidado como una de las artistas más influyentes de su generación."
+    },
+    {
+        id: 8,
+        name: "AC/DC",
+        image: "images/artist8.jpg",
         description: "Banda australiana de hard rock fundada en 1973 por los hermanos Malcolm y Angus Young. AC/DC es una de las agrupaciones más legendarias del rock, con himnos como *Highway to Hell*, *Back in Black* y *Thunderstruck*. Su sonido potente, riffs eléctricos y la enérgica presencia de sus vocalistas han influenciado generaciones de músicos. A lo largo de décadas, han mantenido su esencia rebelde y su impacto en la música sigue siendo inquebrantable."
-    }
+    },
 ]
 
 // Funcionalidad para el carrusel de anuncios
@@ -441,7 +447,7 @@ function setupArtistPage() {
                 <h3>${product.name}</h3>
                 <p class="product-artist">${product.artist}</p>
                 <p class="product-price">S/. ${product.price.toFixed(2)}</p>
-                <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola,%20quiero%20más%20información', '_blank')">Contactar</button>
+                <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
             </div>
         `;
 
@@ -521,7 +527,7 @@ function loadProducts(filter = "all") {
                 <h3>${product.name}</h3>
                 <p class="product-artist">${product.artist}</p>
                 <p class="product-price">S/. ${product.price.toFixed(2)}</p>
-                <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola,%20quiero%20más%20información', '_blank')">Contactar</button>
+                <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
             </div>
         `;
 
