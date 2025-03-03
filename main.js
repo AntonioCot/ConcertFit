@@ -11,7 +11,7 @@ const products = [
             "images/product1.jpg",
             "images/product1-thumb1.jpg",
             "images/product1-thumb2.jpg",
-            "images/product1-thumb3.jpg"
+            // "images/product1-thumb3.jpg"
         ],
         description: "El Polo Álvaro Díaz Sayonara Tour 2025 es una prenda oversize de algodón 20/1, perfecta para los fans del artista puertorriqueño Álvaro Díaz, una de las figuras más innovadoras del reggaetón y hip-hop latino. Inspirado en su álbum Sayonara, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, destacando la esencia visual del disco. Una pieza exclusiva que fusiona comodidad y tendencia urbana."
     },
@@ -26,7 +26,7 @@ const products = [
             "images/product2.jpg",
             "images/product2-thumb1.jpg",
             "images/product2-thumb2.jpg",
-            "images/product2-thumb3.jpg"
+            // "images/product2-thumb3.jpg"
         ],
         description: "El Polo Álvaro Díaz Sayonara Tour 2025 es una prenda oversize de algodón 20/1, perfecta para los fans del artista puertorriqueño Álvaro Díaz, una de las figuras más innovadoras del reggaetón y hip-hop latino. Inspirado en su álbum Sayonara, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, destacando la esencia visual del disco. Una pieza exclusiva que fusiona comodidad y tendencia urbana."
     },
@@ -41,7 +41,7 @@ const products = [
             "images/product3.jpg",
             "images/product3-thumb1.jpg",
             "images/product3-thumb2.jpg",
-            "images/product3-thumb3.jpg"
+            // "images/product3-thumb3.jpg"
         ],
         description: "El Polo Álvaro Díaz Sayonara Tour 2025 es una prenda oversize de algodón 20/1, perfecta para los fans del artista puertorriqueño Álvaro Díaz, una de las figuras más innovadoras del reggaetón y hip-hop latino. Inspirado en su álbum Sayonara, este diseño combina un estilo minimalista en el frente con un impactante arte gráfico en la espalda, destacando la esencia visual del disco. Una pieza exclusiva que fusiona comodidad y tendencia urbana."
     },
@@ -756,4 +756,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-  
