@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./images/concertfit-favicon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos - ConcertFit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo" id="logo">
+          <img src="images/logo.png" alt="ConcertFit Logo">
+        </div>
+        <div class="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html" class="active">Productos</a></li>
+            <li><a href="artistas.html">Artistas</a></li>
+            <li><a href="conciertos.html">Próximos Conciertos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- <div class="cart">
+          <a href="#"><i class="fas fa-shopping-cart"></i> <span>0</span></a>
+        </div> -->
+        
+      </div>
+    </header>
+    <div class="overlay"></div>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Todos Nuestros Productos</h1>
+          <p>Encuentra el polo perfecto para tu próximo concierto</p>
+        </div>
+      </section>
+
+      <section class="products">
+        <div class="container">
+          <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="trap">Trap</button>
+            <button class="filter-btn" data-filter="rock">Rock</button>
+            <button class="filter-btn" data-filter="pop">Pop</button>
+            <button class="filter-btn" data-filter="reggaeton">Reggaeton</button>
+            <button class="filter-btn" data-filter="electronica">Electrónica</button>
+          </div>
+          <div class="product-grid" id="all-products">
+            <!-- Los productos se cargarán dinámicamente con JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div class="container">
+          <h2>Suscríbete a nuestro Newsletter</h2>
+          <p>Recibe las últimas novedades sobre nuevos productos y próximos conciertos</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn">Suscribirse</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+
+          <!-- <div class="footer-logo">
+            <img src="images/logo.png" alt="ConcertFit Logo">
+            <p>La mejor tienda de polos para conciertos</p>
+          </div> -->
+          
+          <div class="footer-links">
+            <h3>Enlaces Rápidos</h3>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="productos.html">Productos</a></li>
+              <li><a href="artistas.html">Artistas</a></li>
+              <li><a href="conciertos.html">Próximos Conciertos</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contacto</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Tienda virtual</p>
+            <p><i class="fas fa-phone"></i> +51 991 934 736</p>
+            <p><i class="fas fa-envelope"></i> antoine04cot@gmail.com</p>
+          </div>
+          <div class="footer-social">
+            <h3>Síguenos</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61573434674309"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/concertfit.pe/"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 ConcertFit. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
