@@ -189,464 +189,570 @@ const artists = [
     },
 ]
 
-/***************************************************
- * 2) FUNCIONALIDADES GENERALES
- ***************************************************/
-// Barra de anuncios (si la usas con clonación infinita)
+// Funcionalidad para el carrusel de anuncios
 function setupAnnouncementBar() {
-  const announcements = document.querySelector(".announcements");
-  if (!announcements) return;
-  // Ejemplo de clonación
-  const clonedAnnouncements = [...announcements.children].map((item) =>
-    item.cloneNode(true)
-  );
-  clonedAnnouncements.forEach((item) => {
-    announcements.appendChild(item);
-  });
+    const announcements = document.querySelector('.announcements');
+    if (!announcements) return;
+
+    // Clonar los anuncios para crear un efecto infinito
+    const clonedAnnouncements = [...announcements.children].map(item => item.cloneNode(true));
+    clonedAnnouncements.forEach(item => {
+        announcements.appendChild(item);
+    });
 }
 
-// Menú hamburguesa
+// Funcionalidad para el menú hamburguesa
 function setupMobileMenu() {
-  const hamburgerMenu = document.querySelector(".hamburger-menu");
-  const nav = document.querySelector("nav");
-  const overlay = document.querySelector(".overlay");
-  const navLinks = document.querySelectorAll("nav ul li a");
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const overlay = document.querySelector('.overlay');
+    const navLinks = document.querySelectorAll('nav ul li a');
 
-  if (!hamburgerMenu || !nav || !overlay) return;
+    if (!hamburgerMenu || !nav || !overlay) return;
 
-  hamburgerMenu.addEventListener("click", () => {
-    hamburgerMenu.classList.toggle("active");
-    nav.classList.toggle("active");
-    overlay.classList.toggle("active");
-    document.body.style.overflow = nav.classList.contains("active")
-      ? "hidden"
-      : "";
-  });
-
-  overlay.addEventListener("click", () => {
-    hamburgerMenu.classList.remove("active");
-    nav.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      hamburgerMenu.classList.remove("active");
-      nav.classList.remove("active");
-      overlay.classList.remove("active");
-      document.body.style.overflow = "";
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     });
-  });
+
+    overlay.addEventListener('click', () => {
+        hamburgerMenu.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
 }
 
-// Filtros de productos
+// Funcionalidad para filtrar productos
 function setupProductFilters() {
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  if (!filterButtons.length) return;
+    const filterButtons = document.querySelectorAll('.filter-btn');
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Quitar 'active' de todos
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      // Marcar 'active' al clickeado
-      button.classList.add("active");
+    if (!filterButtons.length) return;
 
-      const filter = button.getAttribute("data-filter");
-      loadProducts(filter);
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Añadir clase active al botón clickeado
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            // Recargar los productos filtrados
+            loadProducts(filter);
+        });
     });
-  });
 }
 
-// Añadir al carrito (botón que aumenta contador o abre WhatsApp)
-function setupAddToCart() {
-  const addToCartButtons = document.querySelectorAll(
-    ".btn-add-cart, .add-to-cart-btn"
-  );
-  const cartCount = document.querySelector(".cart span");
-
-  // Si no hay contador o botones, no hacer nada
-  if (!addToCartButtons.length || !cartCount) return;
-
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const currentCount = parseInt(cartCount.textContent);
-      cartCount.textContent = currentCount + 1;
-      alert("¡Producto añadido al carrito!");
-    });
-  });
-}
-
-// Navegación de artistas (ejemplo: clic en tarjeta -> ir a artist.html)
-function setupArtistNavigation() {
-  const artistElements = document.querySelectorAll(".artist");
-  if (!artistElements.length) return;
-
-  artistElements.forEach((artistElement) => {
-    artistElement.addEventListener("click", () => {
-      const artistName = artistElement.querySelector("h3").textContent;
-      window.location.href = `artist.html?name=${encodeURIComponent(
-        artistName
-      )}`;
-    });
-  });
-}
-
-/***************************************************
- * 3) PÁGINA ARTIST.HTML
- ***************************************************/
-function setupArtistPage() {
-  console.log("Ejecutando setupArtistPage...");
-  const urlParams = new URLSearchParams(window.location.search);
-  const artistName = urlParams.get("name");
-
-  if (!artistName) {
-    console.error("No se encontró el nombre del artista en la URL.");
-    return;
-  }
-
-  const artist = artists.find(
-    (a) => a.name.trim().toLowerCase() === artistName.trim().toLowerCase()
-  );
-
-  if (!artist) {
-    console.error("Artista no encontrado:", artistName);
-    return;
-  }
-
-  // Actualizar datos en artist.html
-  const artistNameElem = document.getElementById("artist-name");
-  const artistDescElem = document.getElementById("artist-description");
-  const artistImgElem = document.querySelector(".artist-image");
-
-  if (artistNameElem) artistNameElem.textContent = artist.name;
-  if (artistDescElem) artistDescElem.textContent = artist.description;
-  if (artistImgElem) artistImgElem.src = artist.image;
-
-  // Mostrar solo productos de ese artista
-  const productGrid = document.querySelector(".artist-products .product-grid");
-  if (!productGrid) return;
-
-  productGrid.innerHTML = ""; // limpiar
-
-  const artistProducts = products.filter(
-    (p) => p.artist.trim().toLowerCase() === artist.name.trim().toLowerCase()
-  );
-
-  if (artistProducts.length === 0) {
-    productGrid.innerHTML =
-      '<div class="custom-message">Próximamente saldrán productos de este artista.</div>';
-    productGrid.style.cssText = `
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    `;
-    document.querySelector(".custom-message").style.cssText = `
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      padding: 20px;
-      max-width: 600px;
-      border: 2px solid #000;
-      border-radius: 10px;
-      background-color: #f8f8f8;
-    `;
-    return;
-  }
-
-  artistProducts.forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.className = "product-card";
-    productCard.innerHTML = `
-      <a href="product-details.html?id=${product.id}" class="card-link">
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}">
-        </div>
-        <div class="product-info">
-          <h3>${product.name}</h3>
-          <p class="product-artist">${product.artist}</p>
-          <p class="product-price">S/. ${product.price.toFixed(2)}</p>
-        </div>
-      </a>
-      <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
-    `;
-    productGrid.appendChild(productCard);
-  });
-
-  console.log("Productos de artista añadidos al HTML:", productGrid.innerHTML);
-}
-
-/***************************************************
- * 4) PÁGINA PRODUCT-DETAILS.HTML
- ***************************************************/
+// Funcionalidad para la página de detalles del producto
 function setupProductDetails() {
-  console.log("Ejecutando setupProductDetails...");
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get("id");
+    // Obtener el ID del producto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
 
-  if (!productId) {
-    console.error("No se encontró el ID del producto en la URL.");
-    return;
-  }
+    if (!productId) return;
 
-  // Buscar el producto por ID
-  const product = products.find((p) => p.id === parseInt(productId));
-  if (!product) {
-    console.error("Producto no encontrado:", productId);
-    return;
-  }
+    // Buscar el producto por ID
+    const product = products.find(p => p.id === parseInt(productId));
 
-  // Actualizar la información del producto en la página
-  const productTitle = document.getElementById("product-title");
-  const productArtist = document.getElementById("product-artist");
-  const productPrice = document.getElementById("product-price");
-  const productDesc = document.getElementById("product-description");
-  const mainImage = document.getElementById("product-main-image");
+    if (!product) return;
 
-  if (productTitle) productTitle.textContent = product.name;
-  if (productArtist) productArtist.textContent = product.artist;
-  if (productPrice) productPrice.textContent = `S/. ${product.price.toFixed(2)}`;
-  if (productDesc) productDesc.textContent = product.description;
+    // Actualizar la información del producto en la página
+    const productTitle = document.getElementById('product-title');
+    const productArtist = document.getElementById('product-artist');
+    const productPrice = document.getElementById('product-price');
+    const mainImage = document.querySelector('.main-image');
 
-  if (mainImage) {
+    if (productTitle) productTitle.textContent = product.name;
+    if (productArtist) productArtist.textContent = product.artist;
+    if (productPrice) productPrice.textContent = `$${product.price}`;
+    if (mainImage) mainImage.src = product.image;
+
+    // Cambiar las miniaturas en la galería
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    if (thumbnails.length && mainImage) {
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Remover clase active de todas las miniaturas
+                thumbnails.forEach(t => t.classList.remove('active'));
+
+                // Añadir clase active a la miniatura clickeada
+                thumb.classList.add('active');
+
+                // Cambiar la imagen principal
+                mainImage.src = thumb.src;
+            });
+        });
+    }
+
+    // Funcionalidad para seleccionar talla
+    const sizeOptions = document.querySelectorAll('.size-option');
+
+    if (sizeOptions.length) {
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remover clase active de todas las opciones
+                sizeOptions.forEach(opt => opt.classList.remove('active'));
+
+                // Añadir clase active a la opción clickeada
+                option.classList.add('active');
+            });
+        });
+    }
+
+    // Funcionalidad para cambiar cantidad
+    const decreaseBtn = document.getElementById('decrease-quantity');
+    const increaseBtn = document.getElementById('increase-quantity');
+    const quantityInput = document.getElementById('quantity');
+
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        decreaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    }
+}
+
+// Funcionalidad para añadir al carrito
+function setupAddToCart() {
+    const addToCartButtons = document.querySelectorAll('.btn-add-cart, .add-to-cart-btn');
+    const cartCount = document.querySelector('.cart span');
+
+    if (!addToCartButtons.length || !cartCount) return;
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Incrementar el contador del carrito
+            const currentCount = parseInt(cartCount.textContent);
+            cartCount.textContent = currentCount + 1;
+
+            // Mostrar mensaje de confirmación
+            alert('¡Producto añadido al carrito!');
+        });
+    });
+}
+
+// Funcionalidad para la navegación de artistas
+function setupArtistNavigation() {
+    const artistElements = document.querySelectorAll('.artist');
+
+    if (!artistElements.length) return;
+
+    artistElements.forEach(artistElement => {
+        artistElement.addEventListener('click', () => {
+            const artistName = artistElement.querySelector('h3').textContent;
+            window.location.href = `artist.html?name=${encodeURIComponent(artistName)}`;
+        });
+    });
+}
+
+// Funcionalidad para la página de artista
+function setupArtistPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const artistName = urlParams.get('name');
+
+    if (!artistName) {
+        console.error("No se encontró el nombre del artista en la URL.");
+        return;
+    }
+
+    // Buscar el artista por nombre exacto
+    const artist = artists.find(a => a.name.trim().toLowerCase() === artistName.trim().toLowerCase());
+
+    if (!artist) {
+        console.error("Artista no encontrado:", artistName);
+        return;
+    }
+
+    // Actualizar la información del artista en la página
+    document.getElementById('artist-name').textContent = artist.name;
+    document.getElementById('artist-description').textContent = artist.description;
+    document.querySelector('.artist-image').src = artist.image;
+
+    // Obtener contenedor de productos
+    const productGrid = document.querySelector('.artist-products .product-grid');
+
+    if (!productGrid) {
+        console.error("No se encontró el contenedor de productos.");
+        return;
+    }
+
+    // *** Evitar que se carguen productos globales ***
+    productGrid.innerHTML = ''; // Limpiar antes de agregar productos nuevos
+
+    // Filtrar productos por artista
+    const artistProducts = products.filter(p => p.artist.trim().toLowerCase() === artist.name.trim().toLowerCase());
+
+    if (artistProducts.length === 0) {
+        const productGrid = document.querySelector('.product-grid');
+
+        // Insertar el mensaje dentro de .product-grid
+        productGrid.innerHTML = '<div class="custom-message">Próximamente saldrán productos de este artista.</div>';
+
+        // Asegurar que .product-grid sea un contenedor flex y centre el contenido
+        productGrid.style.cssText = `
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        `;
+
+        // Aplicar estilos a .custom-message para mejor apariencia
+        document.querySelector('.custom-message').style.cssText = `
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+        `;
+    }
+
+    // Insertar solo los productos de este artista
+    artistProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+    
+        productCard.innerHTML = `
+            <a href="product-details.html?id=${product.id}" class="card-link">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <p class="product-artist">${product.artist}</p>
+                    <p class="product-price">S/. ${product.price.toFixed(2)}</p>
+                </div>
+            </a>
+            <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
+        `;
+    
+        productGrid.appendChild(productCard);
+    });
+
+    console.log("Productos añadidos al HTML:", productGrid.innerHTML);
+
+    // setupAddToCart(); // Habilitar funcionalidad de carrito
+}
+
+
+// Funcionalidad para cargar los producto al HTML
+function loadProducts(filter = "all") {
+    const productGrid = document.querySelector('.product-grid');
+
+    if (!productGrid) return;
+
+    // Resetear los estilos de `.product-grid` antes de modificar su contenido
+    productGrid.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 100%;
+        min-height: auto;
+    `;
+
+    // Limpiar el contenedor antes de agregar productos
+    productGrid.innerHTML = '';
+
+    // Filtrar productos si se selecciona una categoría específica
+    const filteredProducts = filter === "all" ? products : products.filter(p => p.category === filter);
+
+    // Si no hay productos, mostrar el mensaje de "Próximamente..."
+    if (filteredProducts.length === 0) {
+        productGrid.innerHTML = '<div class="custom-message">Próximamente saldrán productos de esta categoría</div>';
+
+        // Aplicar estilos a `.product-grid` para centrar el mensaje
+        productGrid.style.cssText = `
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 200px;
+        `;
+
+        // Aplicar estilos a `.custom-message` para mejorar la apariencia
+        document.querySelector('.custom-message').style.cssText = `
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+        `;
+
+        return;
+    }
+
+    // Recorrer el array de productos y generar las tarjetas dinámicamente
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.setAttribute('data-category', product.category);
+
+        productCard.innerHTML = `
+        <a href="product-details.html?id=${product.id}" class="card-link">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <p class="product-artist">${product.artist}</p>
+                <p class="product-price">S/. ${product.price.toFixed(2)}</p>
+            </div>
+        </a>
+        <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar
+        </button>
+    `;
+
+        productGrid.appendChild(productCard);
+    });
+
+    // Reinicializar la funcionalidad de añadir al carrito después de actualizar productos
+    // setupAddToCart();
+}
+
+
+function loadFeaturedArtists() {
+    const artistSlider = document.querySelector('.artist-slider');
+    if (!artistSlider) return;
+
+    // Limpiar contenido anterior
+    artistSlider.innerHTML = '';
+
+    // Generar dinámicamente cada artista
+    artists.forEach(artist => {
+        const artistElement = document.createElement('div');
+        artistElement.className = 'artist';
+        artistElement.innerHTML = `
+            <img src="${artist.image}" alt="${artist.name}">
+            <h3>${artist.name}</h3>
+        `;
+
+        // Evento de clic para redirigir a la página del artista
+        artistElement.addEventListener('click', () => {
+            window.location.href = `artist.html?name=${encodeURIComponent(artist.name)}`;
+        });
+
+        artistSlider.appendChild(artistElement);
+    });
+
+    setupArtistSlider(); // Inicializa el desplazamiento
+}
+
+// Funcionalidad para mover el slider de artistas
+function setupArtistSlider() {
+    const slider = document.querySelector('.artist-slider');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+
+    if (!slider || !prevBtn || !nextBtn) return;
+
+    let scrollAmount = 0;
+    const scrollStep = 250; // Distancia a mover por cada clic
+
+    prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+}
+
+// Funcionalidad de cargar a los artistas y redirigirlos
+function loadArtists() {
+    const artistContainer = document.getElementById('all-artists');
+    if (!artistContainer) return;
+
+    // Limpiar el contenedor antes de agregar artistas
+    artistContainer.innerHTML = '';
+
+    // Recorrer el array de artistas y generar las tarjetas dinámicamente
+    artists.forEach(artist => {
+        const artistCard = document.createElement('div');
+        artistCard.className = 'artist-card';
+
+        artistCard.innerHTML = `
+            <img src="${artist.image}" alt="${artist.name}">
+            <div class="artist-info">
+                <h3>${artist.name}</h3>
+            </div>
+        `;
+
+        // Agregar evento de clic para redirigir a artist.html
+        artistCard.addEventListener('click', () => {
+            window.location.href = `artist.html?name=${encodeURIComponent(artist.name)}`;
+        });
+
+        artistContainer.appendChild(artistCard);
+    });
+}
+
+function setupProductDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (!productId) {
+        console.error("No se encontró el ID del producto en la URL.");
+        return;
+    }
+
+    // Buscar el producto por ID
+    const product = products.find(p => p.id === parseInt(productId));
+
+    if (!product) {
+        console.error("Producto no encontrado:", productId);
+        return;
+    }
+
+    // Actualizar la información del producto en la página
+    document.getElementById('product-title').textContent = product.name;
+    document.getElementById('product-artist').textContent = product.artist;
+    document.getElementById('product-price').textContent = `S/. ${product.price.toFixed(2)}`;
+    document.getElementById('product-description').textContent = product.description;
+
+    // Cargar la imagen principal
+    const mainImage = document.getElementById('product-main-image');
     mainImage.src = product.images[0];
     mainImage.alt = product.name;
-  }
 
-  // Cargar las miniaturas dinámicamente
-  const thumbnailContainer = document.getElementById("thumbnail-container");
-  if (thumbnailContainer) {
-    thumbnailContainer.innerHTML = "";
+    // Cargar las miniaturas dinámicamente
+    const thumbnailContainer = document.getElementById('thumbnail-container');
+    thumbnailContainer.innerHTML = ''; // Limpiar antes de insertar nuevas miniaturas
+
     product.images.forEach((image, index) => {
-      const thumbnail = document.createElement("img");
-      thumbnail.src = image;
-      thumbnail.alt = `Miniatura ${index + 1}`;
-      thumbnail.classList.add("thumbnail");
-      if (index === 0) {
-        thumbnail.classList.add("active");
-      }
-      thumbnail.addEventListener("click", () => {
-        if (mainImage) {
-          mainImage.src = image;
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.alt = `Miniatura ${index + 1}`;
+        thumbnail.classList.add('thumbnail');
+
+        // La primera imagen se marca como activa
+        if (index === 0) {
+            thumbnail.classList.add('active');
         }
-        document
-          .querySelectorAll(".thumbnail")
-          .forEach((thumb) => thumb.classList.remove("active"));
-        thumbnail.classList.add("active");
-      });
-      thumbnailContainer.appendChild(thumbnail);
+
+        // Evento para cambiar la imagen principal al hacer clic en la miniatura
+        thumbnail.addEventListener('click', () => {
+            mainImage.src = image;
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        });
+
+        thumbnailContainer.appendChild(thumbnail);
     });
-  }
-  console.log("Detalles del producto cargados:", product);
+
+    console.log("Detalles del producto cargados:", product);
 }
 
-/***************************************************
- * 5) CARGA DE PRODUCTOS (EN HOME O PRODUCTOS.HTML)
- ***************************************************/
-function loadProducts(filter = "all") {
-  const productGrid = document.querySelector(".product-grid");
-  if (!productGrid) return;
+// Asegurar que se ejecute cuando se cargue `product-details.html`
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.pathname.includes("product-details.html")) {
+        setupProductDetails();
+    } else {
+        loadProducts(); // Solo carga productos en páginas donde se necesite
+    }
+});
 
-  // Reset estilos
-  productGrid.style.cssText = `
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 100%;
-    min-height: auto;
-  `;
 
-  // Limpiar contenedor
-  productGrid.innerHTML = "";
+// Inicializar todas las funcionalidades cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Página cargada, ejecutando setupArtistPage...");
 
-  // Filtrar
-  const filteredProducts =
-    filter === "all"
-      ? products
-      : products.filter((p) => p.category === filter);
+    // Ejecutar setupArtistPage solo en artist.html
+    if (window.location.pathname.includes("artist.html")) {
+        setupArtistPage();
+    } else {
+        loadProducts(); // Solo se ejecuta en páginas que NO sean artist.html
+    }
 
-  if (filteredProducts.length === 0) {
-    productGrid.innerHTML =
-      '<div class="custom-message">Próximamente saldrán productos de esta categoría</div>';
-    productGrid.style.cssText = `
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      min-height: 200px;
-    `;
-    document.querySelector(".custom-message").style.cssText = `
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      padding: 20px;
-      max-width: 600px;
-      border: 2px solid #000;
-      border-radius: 10px;
-      background-color: #f8f8f8;
-    `;
-    return;
-  }
-
-  // Generar tarjetas
-  filteredProducts.forEach((product) => {
-    const productCard = document.createElement("div");
-    productCard.className = "product-card";
-    productCard.setAttribute("data-category", product.category);
-    productCard.innerHTML = `
-      <a href="product-details.html?id=${product.id}" class="card-link">
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}">
-        </div>
-        <div class="product-info">
-          <h3>${product.name}</h3>
-          <p class="product-artist">${product.artist}</p>
-          <p class="product-price">S/. ${product.price.toFixed(2)}</p>
-        </div>
-      </a>
-      <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar
-      </button>
-    `;
-    productGrid.appendChild(productCard);
-  });
-}
-
-/***************************************************
- * 6) SLIDER DE ARTISTAS EN HOME
- ***************************************************/
-function loadFeaturedArtists() {
-  const artistSlider = document.querySelector(".artist-slider");
-  if (!artistSlider) return;
-
-  // Limpiar
-  artistSlider.innerHTML = "";
-
-  // Agregar artistas
-  artists.forEach((artist) => {
-    const artistElement = document.createElement("div");
-    artistElement.className = "artist";
-    artistElement.innerHTML = `
-      <img src="${artist.image}" alt="${artist.name}">
-      <h3>${artist.name}</h3>
-    `;
-    // Clic -> ir a artist.html
-    artistElement.addEventListener("click", () => {
-      window.location.href = `artist.html?name=${encodeURIComponent(
-        artist.name
-      )}`;
-    });
-    artistSlider.appendChild(artistElement);
-  });
-
-  setupArtistSlider();
-}
-
-function setupArtistSlider() {
-  const slider = document.querySelector(".artist-slider");
-  const prevBtn = document.querySelector(".slider-btn.prev");
-  const nextBtn = document.querySelector(".slider-btn.next");
-  if (!slider || !prevBtn || !nextBtn) return;
-
-  const scrollStep = 250;
-  prevBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: -scrollStep, behavior: "smooth" });
-  });
-  nextBtn.addEventListener("click", () => {
-    slider.scrollBy({ left: scrollStep, behavior: "smooth" });
-  });
-}
-
-// Cargar lista completa de artistas en artists.html (si aplica)
-function loadArtists() {
-  const artistContainer = document.getElementById("all-artists");
-  if (!artistContainer) return;
-
-  artistContainer.innerHTML = "";
-  artists.forEach((artist) => {
-    const artistCard = document.createElement("div");
-    artistCard.className = "artist-card";
-    artistCard.innerHTML = `
-      <img src="${artist.image}" alt="${artist.name}">
-      <div class="artist-info">
-        <h3>${artist.name}</h3>
-      </div>
-    `;
-    artistCard.addEventListener("click", () => {
-      window.location.href = `artist.html?name=${encodeURIComponent(
-        artist.name
-      )}`;
-    });
-    artistContainer.appendChild(artistCard);
-  });
-}
-
-/***************************************************
- * 7) INICIALIZACIÓN GLOBAL (1 solo DOMContentLoaded)
- ***************************************************/
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Página cargada...");
-
-  // Detectar la página según el nombre del archivo
-  const pathname = window.location.pathname;
-
-  // Lógica condicional
-  if (pathname.includes("product-details.html")) {
-    // Solo en la página de detalles
+    setupAnnouncementBar();
+    setupMobileMenu();
+    setupProductFilters();
     setupProductDetails();
-  } else if (pathname.includes("artist.html")) {
-    // Solo en la página del artista
-    setupArtistPage();
-  } else {
-    // Cualquier otra (index, productos, etc.)
-    loadProducts(); 
-  }
+    setupAddToCart();
+    setupArtistNavigation();
+    loadFeaturedArtists();
+    loadArtists();
+});
 
-  // Funciones que queremos en todas las páginas (o casi todas)
-  setupAnnouncementBar();
-  setupMobileMenu();
-  setupProductFilters();
-  setupAddToCart();
-  setupArtistNavigation();
-  loadFeaturedArtists();
-  loadArtists();
+document.addEventListener('DOMContentLoaded', () => {
+    const logoElement = document.getElementById('logo');
+    if (logoElement) {
+        logoElement.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
+});
 
-  // Logo clic -> index
-  const logoElement = document.getElementById("logo");
-  if (logoElement) {
-    logoElement.addEventListener("click", () => {
-      window.location.href = "index.html";
-    });
-  }
 
-  // Lógica de tallas y cantidad (si en product-details.html hay controles de tallas)
-  console.log("Se está ejecutando la lógica de tallas y cantidad.");
-  const sizeOptions = document.querySelectorAll(".size-option");
-  if (sizeOptions.length > 0) {
-    sizeOptions.forEach((option) => {
-      option.addEventListener("click", () => {
-        console.log("Click en la talla:", option.textContent);
-        sizeOptions.forEach((opt) => opt.classList.remove("active"));
-        option.classList.add("active");
-      });
-    });
-  }
+// Asegúrate de que este código se ejecute una vez cargado el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Se está ejecutando la lógica de tallas y cantidad.");
 
-  const decreaseBtn = document.getElementById("decrease-quantity");
-  const increaseBtn = document.getElementById("increase-quantity");
-  const quantityInput = document.getElementById("quantity");
-  if (decreaseBtn && increaseBtn && quantityInput) {
-    decreaseBtn.addEventListener("click", () => {
-      const currentValue = parseInt(quantityInput.value);
-      if (currentValue > 1) {
-        quantityInput.value = currentValue - 1;
-      }
-    });
-    increaseBtn.addEventListener("click", () => {
-      const currentValue = parseInt(quantityInput.value);
-      quantityInput.value = currentValue + 1;
-    });
-  }
+    // 1) Seleccionar TODAS las tallas
+    const sizeOptions = document.querySelectorAll('.size-option');
+
+    // Verificar si hay elementos .size-option
+    if (sizeOptions.length > 0) {
+        sizeOptions.forEach(option => {
+            // Al hacer click en cualquier talla...
+            option.addEventListener('click', () => {
+                console.log("Click en la talla:", option.textContent);
+
+                // Quitar 'active' de todas las tallas
+                sizeOptions.forEach(opt => opt.classList.remove('active'));
+
+                // Poner 'active' en la talla clickeada
+                option.classList.add('active');
+            });
+        });
+    }
+
+    // 2) Seleccionar los botones +, - y el input
+    const decreaseBtn = document.getElementById('decrease-quantity');
+    const increaseBtn = document.getElementById('increase-quantity');
+    const quantityInput = document.getElementById('quantity');
+
+    // Verificar si existen en el DOM
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        // Botón -
+        decreaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        // Botón +
+        increaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    }
 });
