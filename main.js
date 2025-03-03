@@ -447,8 +447,7 @@ function setupArtistPage() {
                     <p class="product-price">S/. ${product.price.toFixed(2)}</p>
                 </div>
             </a>
-            <button class="btn-add-cart"
-                    onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
+            <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
         `;
     
         productGrid.appendChild(productCard);
@@ -710,3 +709,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// Asegúrate de que este código se ejecute una vez cargado el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Se está ejecutando la lógica de tallas y cantidad.");
+
+    // 1) Seleccionar TODAS las tallas
+    const sizeOptions = document.querySelectorAll('.size-option');
+
+    // Verificar si hay elementos .size-option
+    if (sizeOptions.length > 0) {
+        sizeOptions.forEach(option => {
+            // Al hacer click en cualquier talla...
+            option.addEventListener('click', () => {
+                console.log("Click en la talla:", option.textContent);
+
+                // Quitar 'active' de todas las tallas
+                sizeOptions.forEach(opt => opt.classList.remove('active'));
+
+                // Poner 'active' en la talla clickeada
+                option.classList.add('active');
+            });
+        });
+    }
+
+    // 2) Seleccionar los botones +, - y el input
+    const decreaseBtn = document.getElementById('decrease-quantity');
+    const increaseBtn = document.getElementById('increase-quantity');
+    const quantityInput = document.getElementById('quantity');
+
+    // Verificar si existen en el DOM
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        // Botón -
+        decreaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        // Botón +
+        increaseBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    }
+});
+  
