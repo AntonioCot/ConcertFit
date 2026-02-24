@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./images/concertfit-favicon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalles del Producto - ConcertFit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo" id="logo">
+          <img src="images/logo.png" alt="ConcertFit Logo">
+        </div>
+        <div class="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html" class="active">Productos</a></li>
+            <li><a href="artistas.html">Artistas</a></li>
+            <li><a href="conciertos.html">Próximos Conciertos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- <div class="cart">
+          <a href="#"><i class="fas fa-shopping-cart"></i> <span>0</span></a>
+        </div> -->
+        
+      </div>
+    </header>
+    <div class="overlay"></div>
+
+    <main>
+      <section class="product-details">
+        <div class="container">
+          <div class="product-details-container">
+            <div class="product-gallery">
+              <img src="" alt="Producto" class="main-image" id="product-main-image">
+              <div class="thumbnail-container" id="thumbnail-container">
+                  <!-- Miniaturas dinámicas -->
+              </div>
+            </div>
+            <div class="product-details-info">
+              <h1 id="product-title"></h1>
+              <p class="product-details-artist" id="product-artist"></p>
+              <p class="product-details-price" id="product-price"></p>
+              <div class="product-details-description" id="product-description"></div>
+              <div class="product-details-sizes">
+                <h3>Tallas Disponibles</h3>
+                <div class="size-options">
+                  <div class="size-option active">M</div>
+                  <div class="size-option">L</div>
+                </div>
+              </div>
+              <div class="product-details-quantity">
+                <h3>Cantidad</h3>
+                <div class="quantity-selector">
+                  <button class="quantity-btn" id="decrease-quantity">-</button>
+                  <input type="text" value="1" min="1" class="quantity-input" id="quantity">
+                  <button class="quantity-btn" id="increase-quantity">+</button>
+                </div>
+              </div>
+              <button class="add-to-cart-btn" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">
+                <i class="fas fa-shopping-cart"></i> Contactar
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="related-products">
+        <div class="container">
+          <h2>Productos Relacionados</h2>
+          <div class="product-grid">
+            <!-- Los productos se cargarán dinámicamente con JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+
+          <!-- <div class="footer-logo">
+            <img src="images/logo.png" alt="ConcertFit Logo">
+            <p>La mejor tienda de polos para conciertos</p>
+          </div> -->
+          
+          <div class="footer-links">
+            <h3>Enlaces Rápidos</h3>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="productos.html">Productos</a></li>
+              <li><a href="artistas.html">Artistas</a></li>
+              <li><a href="conciertos.html">Próximos Conciertos</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contacto</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Tienda virtual</p>
+            <p><i class="fas fa-phone"></i> +51 991 934 736</p>
+            <p><i class="fas fa-envelope"></i> antoine04cot@gmail.com</p>
+          </div>
+          <div class="footer-social">
+            <h3>Síguenos</h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61573434674309"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/concertfit.pe/"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 ConcertFit. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
