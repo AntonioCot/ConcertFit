@@ -506,7 +506,7 @@ function setupArtistPage() {
                     <p class="product-price">S/. ${product.price.toFixed(2)}</p>
                 </div>
             </a>
-            <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
+            <button class="btn-add-cart" onclick="window.open('https://wa.me/51932699840?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
         `;
     
         productGrid.appendChild(productCard);
@@ -585,7 +585,7 @@ function loadProducts(filter = "all") {
                 <p class="product-price">S/. ${product.price.toFixed(2)}</p>
             </div>
         </a>
-        <button class="btn-add-cart" onclick="window.open('https://wa.me/51991934736?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar
+        <button class="btn-add-cart" onclick="window.open('https://wa.me/51932699840?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar
         </button>
     `;
 
