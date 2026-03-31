@@ -506,7 +506,7 @@ function setupArtistPage() {
                     <p class="product-price">S/. ${product.price.toFixed(2)}</p>
                 </div>
             </a>
-            <button class="btn-add-cart" onclick="window.open('https://wa.me/51932699840?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar</button>
+            <button class="btn-add-cart" onclick="abrirWhatsApp()">Contactar</button>
         `;
     
         productGrid.appendChild(productCard);
@@ -585,10 +585,8 @@ function loadProducts(filter = "all") {
                 <p class="product-price">S/. ${product.price.toFixed(2)}</p>
             </div>
         </a>
-        <button class="btn-add-cart" onclick="window.open('https://wa.me/51932699840?text=Hola! Estoy interesado en uno de los polos de mis artistas favoritos. ¿Podrías darme más información?', '_blank')">Contactar
-        </button>
+        <button class="btn-add-cart" onclick="abrirWhatsApp()">Contactar</button>
     `;
-
         productGrid.appendChild(productCard);
     });
 
@@ -816,3 +814,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function abrirWhatsApp() {
+    const numero = "51932699840";
+    
+    // Usamos códigos Unicode para asegurar que los emojis NO se rompan
+    const isla = "\u{1F3DD}\u{FE0F}";
+    const rayo = "\u{26A1}";
+    const polo = "\u{1F455}";
+    const foco = "\u{1F4A1}";
+    const destellos = "\u{2728}";
+
+    const mensaje = `${isla}${rayo} ¡Hola! ${rayo}${isla}\n\n` +
+                    `Estoy interesado/a en sus polos para conciertos ${polo}\n\n` +
+                    `Quisiera ver los diseños disponibles que tienen y también saber cómo puedo crear uno personalizado inspirado en mi artista favorito ${foco}\n\n` +
+                    `¡Quedo atento/a a la información! ${destellos}`;
+    
+    // Usamos la URL de la API oficial que es mejor para cuentas Business
+    const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
+    
+    window.open(url, '_blank');
+}
